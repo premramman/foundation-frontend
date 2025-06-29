@@ -1,6 +1,6 @@
-import { ErrorActions } from "@/app/pages/not-found/ErrorActions";
-import { ErrorImage } from "@/app/pages/not-found/ErrorImage";
-import { ErrorMessage } from "@/app/pages/not-found/ErrorMessage";
+import { ErrorActions } from "@/components/organisms/error/ErrorActions";
+import { ErrorImage } from "@/components/organisms/error/ErrorImage";
+import { ErrorMessage } from "@/components/organisms/error/ErrorMessage";
 
 export default function NotFoundPage() {
   return (

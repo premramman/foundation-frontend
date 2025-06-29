@@ -1,6 +1,6 @@
 import { getRequestConfig } from 'next-intl/server';
 import { getServerSession } from 'next-auth';
-import authOptions from '@/lib/authOptions';
+import authOptions from '@/lib/auth/authOptions';
 
 export default getRequestConfig(async () => {
   // Get the session from NextAuth

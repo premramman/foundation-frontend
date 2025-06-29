@@ -1,7 +1,7 @@
 
 "use client";
-import ProductList from "@/components/features/productList/ProductList";
-import HomeLayout from "@/components/layouts/HomeLayout";
+import ProductList from "@/features/productList/ProductList";
+import HomeLayout from "@/components/templates/HomeLayout";
 
 export default function HomePage() {
   return (

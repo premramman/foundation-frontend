@@ -4,11 +4,11 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { signInSchema, SignInSchema } from "@/schemas/signInSchema";
-import { Button } from "../../components/atoms/Button";
-import { Separator } from "../../components/atoms/Separator";
-import { Checkbox } from "../../components/atoms/Checkbox";
-import { Label } from "../../components/atoms/Label";
-import { Input } from "../../components/atoms/Input";
+import { Button } from "../../atoms/Button";
+import { Separator } from "../../atoms/Separator";
+import { Checkbox } from "../../atoms/Checkbox";
+import { Label } from "../../atoms/Label";
+import { Input } from "../../atoms/Input";
 import { LuEye, LuEyeOff } from "react-icons/lu";
 import { FcGoogle } from "react-icons/fc";
 import { TfiMicrosoftAlt } from "react-icons/tfi";
@@ -16,7 +16,7 @@ import { FaFacebookF } from "react-icons/fa";
 import Link from "next/link";
 import Image from 'next/image';
 import appConfig from "@/app.config";
-import BrandLogo from "../../components/atoms/BrandLogo";
+import BrandLogo from "../../atoms/BrandLogo";
 
 export default function SignInForm() {
   const [showPassword, setShowPassword] = useState(false);

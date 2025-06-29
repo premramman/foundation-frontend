@@ -10,7 +10,7 @@ import clsx from "clsx";
 
 export interface ProductCardProps {
   item: Product;
-  viewMode?: "vertical" | "horizontal";
+  viewMode?: "vertical" | "horizontal"; // Add viewMode property
   className?: string;
   style?: React.CSSProperties;
 }
@@ -26,11 +26,14 @@ const ProductCard: React.FC<ProductCardProps> = ({
       "relative bg-white hover:shadow-lg transition border-none hover:border hover:border-gray-100 outline-none",
       viewMode === "vertical"
         ? "flex flex-col w-full max-w-xs h-full"
-        : "flex flex-row w-full max-w-2xl h-auto min-h-[240px]",
+        : "flex flex-row w-full max-w-2xl h-auto",
       "m-0 overflow-hidden",
       className
     )}
-    style={style}
+    style={{
+      ...style,
+      ...(viewMode === "horizontal" && { height: "90%" }), // Decrease height by 10% in horizontal mode
+    }}
     tabIndex={0}
     aria-label={`${item.brand} ${item.name}`}
     role="group"
@@ -38,10 +41,10 @@ const ProductCard: React.FC<ProductCardProps> = ({
     {/* Product Image */}
     <div
       className={clsx(
-        "relative flex-1", // <-- flex-1 to take available space
+        "relative", // Base styles
         viewMode === "horizontal"
-          ? "w-1/3 min-w-[120px] max-w-[220px]"
-          : "w-full h-[unset]"
+          ? "w-[40%] h-auto" // 40% width for horizontal mode
+          : "w-full h-[unset]" // Full width for vertical mode
       )}
       style={{ display: "flex" }}
     >
@@ -75,27 +78,12 @@ const ProductCard: React.FC<ProductCardProps> = ({
     <div
       className={clsx(
         viewMode === "horizontal"
-          ? "flex flex-col justify-between p-4 w-2/3"
+          ? "flex flex-col justify-between p-4 w-[60%]" // 60% width for horizontal mode
           : "w-full"
       )}
     >
       <ProductInfo product={item} />
     </div>
-    {/* Responsive adjustments */}
-    <style jsx>{`
-      @media (max-width: 768px) {
-        div[role="group"] {
-          flex-direction: column !important;
-          max-width: 100% !important;
-        }
-        .min-w-[120px] {
-          min-width: 90px !important;
-        }
-        .max-w-[220px] {
-          max-width: 160px !important;
-        }
-      }
-    `}</style>
   </div>
 );
 

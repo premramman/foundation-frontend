@@ -1,0 +1,67 @@
+/* Horizontal view grid layout */
+.horizontal-grid {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: repeat(1, 1fr); /* Default for xs and sm */
+}
+
+@media (min-width: 768px) {
+  .horizontal-grid {
+    grid-template-columns: repeat(2, 1fr); /* 2 cards for md */
+  }
+}
+
+@media (min-width: 1024px) {
+  .horizontal-grid {
+    grid-template-columns: repeat(3, 1fr); /* 3 cards for lg */
+  }
+}
+
+@media (min-width: 1280px) {
+  .horizontal-grid {
+    grid-template-columns: repeat(3, 1fr); /* 3 cards for xl */
+  }
+}
+
+@media (min-width: 1536px) {
+  .horizontal-grid {
+    grid-template-columns: repeat(4, 1fr); /* 4 cards for xxl */
+  }
+}
+
+/* Vertical view grid layout */
+.vertical-grid {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: repeat(1, 1fr); /* Default for xs */
+}
+
+@media (min-width: 640px) {
+  .vertical-grid {
+    grid-template-columns: repeat(2, 1fr); /* 2 cards for sm */
+  }
+}
+
+@media (min-width: 768px) {
+  .vertical-grid {
+    grid-template-columns: repeat(3, 1fr); /* 3 cards for md */
+  }
+}
+
+@media (min-width: 1024px) {
+  .vertical-grid {
+    grid-template-columns: repeat(4, 1fr); /* 4 cards for lg */
+  }
+}
+
+@media (min-width: 1280px) {
+  .vertical-grid {
+    grid-template-columns: repeat(5, 1fr); /* 5 cards for xl */
+  }
+}
+
+@media (min-width: 1536px) {
+  .vertical-grid {
+    grid-template-columns: repeat(6, 1fr); /* 6 cards for xxl */
+  }
+}

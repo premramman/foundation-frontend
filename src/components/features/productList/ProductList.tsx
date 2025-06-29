@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { VirtualizedList } from '../virtualizedList/VirtualizedList';
 import { Product } from '@/types/product';
 import ProductCard, { ProductCardProps } from '../productCard/ProductCard';
+import appConfig from '@/app.config'; // Import app configuration
 
 interface ProductListProps {
   pageSize?: number;
@@ -168,9 +169,7 @@ const ProductList: React.FC<ProductListProps> = ({ pageSize = 100 }) => {
   const [page, setPage] = useState(1);
 
   const handleLoadMore = () => {
-    // const newItems = generateItems(page * 100 + 1, 100);
-    // setItems(prev => [...prev, ...newItems]);
-    setPage(prev => prev + 1);
+    setPage((prev) => prev + 1);
   };
 
   return (
@@ -181,12 +180,12 @@ const ProductList: React.FC<ProductListProps> = ({ pageSize = 100 }) => {
         onLoadMore={handleLoadMore}
         useWindowScroll={true}
         CardComponent={ProductCard}
-        cardProps={{ viewMode: 'horizontal' }}
+        cardProps={{ viewMode: appConfig.productCardViewMode }} // Dynamically set viewMode
         viewMode="grid"
-        gridColumnCount={5}
+        gridColumnCount={1}
       />
     </div>
   );
-}
+};
 
 export default ProductList;

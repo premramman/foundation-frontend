@@ -2,6 +2,7 @@ import { Virtuoso } from 'react-virtuoso';
 import { VirtuosoGrid } from 'react-virtuoso';
 import { LoadMoreButton } from './LoadMoreButton';
 import React from 'react';
+import "./styles.css"; // Import the CSS file
 
 // Make VirtualizedList generic over T (item type) and P (CardComponent props)
 interface VirtualizedListProps<T, P> {
@@ -10,7 +11,7 @@ interface VirtualizedListProps<T, P> {
   onLoadMore: () => void;
   useWindowScroll?: boolean;
   CardComponent: React.ComponentType<{ item: T } & P>;
-  cardProps?: P; // Additional props for CardComponent
+  cardProps?: P & { viewMode?: 'horizontal' | 'vertical' }; // Ensure viewMode is optional
   viewMode?: 'list' | 'grid';
   gridColumnCount?: number;
 }
@@ -23,12 +24,12 @@ export function VirtualizedList<T, P = {}>({
   CardComponent,
   cardProps,
   viewMode = 'list',
-  gridColumnCount = 4
 }: VirtualizedListProps<T, P>) {
-  // Grid styling
+  // Determine grid styling based on ProductCard's viewMode
   const gridClass =
-    'grid gap-4 p-2 ' +
-    `grid-cols-1 sm:grid-cols-5 md:grid-cols-${gridColumnCount}`;
+    cardProps?.viewMode === 'horizontal'
+      ? 'horizontal-grid' // Horizontal view grid layout
+      : 'vertical-grid'; // Vertical view grid layout
 
   // Render CardComponent with item and spread cardProps
   const renderCard = (index: number) => (
